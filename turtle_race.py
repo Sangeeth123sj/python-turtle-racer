@@ -29,7 +29,7 @@ def create_turtles(colors,spacer):
     spaceradd = spacer
     for i,color in enumerate(colors):
         racer = turtle.Turtle()
-        racer.shape('circle')
+        racer.shape('turtle')
         racer.color(color)
         racer.penup()
         racer.left(90)
@@ -42,13 +42,18 @@ def create_turtles(colors,spacer):
 def race_turtles(colors, turtles):
     while True:
         for turtle in turtles:
-            print(turtle)
+            #print(turtle)
             jump = random.randrange(2,9)
             turtle.forward(jump)
             x,y =  turtle.pos()
-            if y > (HEIGHT/2-20):
+            if y > (HEIGHT/2-50):
                 winner_color = colors[turtles.index(turtle)]
+                turtle.penup()
+                turtle.setpos((-WIDTH/2)+50,0)
+                turtle.color("black")
+                turtle.write(winner_color+" has won!", font=("Verdana",35, "normal",), move=True)
                 print(winner_color+" has won!")
+                time.sleep(2)
                 return
             
 racers = get_no_of_racers()
